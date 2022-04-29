@@ -12,7 +12,7 @@ class Vehicle extends Model
     protected $fillable = 
     ['color',
      'fuel_type',
-     'production_year',
+     'manufacture_year',
      'engine_capacity',
      'mileage',
      'manufacturer_id',
@@ -23,7 +23,7 @@ class Vehicle extends Model
         return $this->belongsTo(Manufacturer::class);
     }
 
-    public function type(){
+    public function vehicle_type(){
         return $this->belongsTo(VehicleType::class);
     }
 }
