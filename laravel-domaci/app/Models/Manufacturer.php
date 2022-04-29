@@ -14,4 +14,8 @@ class Manufacturer extends Model
         'country',
         'email'  
     ];
+
+    public function vehicles(){
+        return $this->hasMany(Vehicle::class);
+    }
 }

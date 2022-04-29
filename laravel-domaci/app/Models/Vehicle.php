@@ -18,4 +18,12 @@ class Vehicle extends Model
      'manufacturer_id',
      'vehicle_type_id'
 ];
+
+    public function manufacturer(){
+        return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function type(){
+        return $this->belongsTo(VehicleType::class);
+    }
 }
