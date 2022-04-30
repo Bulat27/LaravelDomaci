@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Manufacturer>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\VehicleType>
  */
-class ManufacturerFactory extends Factory
+class VehicleTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,7 @@ class ManufacturerFactory extends Factory
         $this->faker->addProvider(new \Faker\Provider\Fakecar($this->faker));
 
         return [
-            'name' => $this->faker->vehicleBrand,
-            'country' => $this->faker->country(),
-            'email' => $this->faker->companyEmail()
+            'name' => $this->faker->unique()->vehicleType()
         ];
     }
 }
