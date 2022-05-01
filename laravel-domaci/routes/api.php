@@ -7,6 +7,7 @@ use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleTypeVehicleController;
 use App\Http\Controllers\ManufacturerVehicleController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,16 @@ Route::resource('vehicles', VehicleController::class);
 
 Route::resource('vehicle-types.vehicles', VehicleTypeVehicleController::class)->only(['index']);
 Route::resource('manufacturers.vehicles', ManufacturerVehicleController::class)->only(['index']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function(Request $request) {
+        return auth()->user();
+    });
+    Route::resource('vehicles', VehicleController::class)->only(['update','store','destroy']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
