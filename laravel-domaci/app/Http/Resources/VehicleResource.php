@@ -13,7 +13,7 @@ class VehicleResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
 
-     public static $wrap = 'vehicle';
+    public static $wrap = 'vehicle';
 
     public function toArray($request)
     {
